@@ -1,6 +1,6 @@
 %global KUBE_MAJOR 1
-%global KUBE_MINOR 13
-%global KUBE_PATCH 0
+%global KUBE_MINOR 12
+%global KUBE_PATCH 10
 %global KUBE_VERSION %{KUBE_MAJOR}.%{KUBE_MINOR}.%{KUBE_PATCH}
 %global RPM_RELEASE 0
 %global ARCH amd64
@@ -12,7 +12,7 @@
 %global KUBE_SEMVER %{semver %{KUBE_MAJOR} %{KUBE_MINOR} %{KUBE_PATCH}}
 
 %global CNI_VERSION 0.7.5
-%global CRI_TOOLS_VERSION 1.13.0
+%global CRI_TOOLS_VERSION 1.12.0
 
 Name: kubelet
 Version: %{KUBE_VERSION}
@@ -21,10 +21,10 @@ Summary: Container cluster management
 License: ASL 2.0
 
 URL: https://kubernetes.io
-Source0: https://dl.k8s.io/v%{KUBE_VERSION}/bin/linux/%{ARCH}/kubelet
+Source0: kubelet
 Source1: kubelet.service
-Source2: https://dl.k8s.io/v%{KUBE_VERSION}/bin/linux/%{ARCH}/kubectl
-Source3: https://dl.k8s.io/v%{KUBE_VERSION}/bin/linux/%{ARCH}/kubeadm
+Source2: kubectl
+Source3: kubeadm
 Source4: 10-kubeadm.conf
 Source5: https://dl.k8s.io/network-plugins/cni-plugins-%{ARCH}-v%{CNI_VERSION}.tgz
 Source6: kubelet.env
@@ -69,10 +69,10 @@ Command-line utility for interacting with a Kubernetes cluster.
 Version: %{KUBE_VERSION}
 Release: %{RPM_RELEASE}
 Summary: Command-line utility for administering a Kubernetes cluster.
-Requires: kubelet >= 1.13.0
-Requires: kubectl >= 1.13.0
+Requires: kubelet >= 1.12.10
+Requires: kubectl >= 1.12.10
 Requires: kubernetes-cni >= 0.7.5
-Requires: cri-tools >= 1.13.0
+Requires: cri-tools >= 1.12.10
 
 %description -n kubeadm
 Command-line utility for administering a Kubernetes cluster.
